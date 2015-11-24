@@ -38,12 +38,7 @@ public class ResizingArrayQueueOfStrings {
 			resize(currentStackLen*2);
 		} 
 		else if((last == stack.length)) {
-			if((last-first) <= (stack.length/2)) {
-				
-			}
-			else {
-				
-			}
+				resize(stack.length);
 		}
 			stack[last++] = item;
 	}
