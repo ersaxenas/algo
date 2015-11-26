@@ -43,9 +43,19 @@ public class App {
 		return arr;
 	}
 	
+	public void testShuffle(int size) {
+		Integer[] arr = new Integer[size];
+		for(int cnt=0; cnt<arr.length; cnt++) {
+			arr[cnt] = cnt;
+		}
+		System.out.println("Shuffling: Initial array:"+Arrays.asList(arr));
+		arr = Shuffler.shuffle(arr);
+		System.out.println("Shuffled array:"+Arrays.asList(arr));
+	}
+	
 	public static void main(String args[]) {
 		App app = new App();
-		app.testShellSort(35);
+		app.testShuffle(20);
 	}
 
 }
