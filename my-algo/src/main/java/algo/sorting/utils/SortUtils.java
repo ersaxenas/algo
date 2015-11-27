@@ -20,5 +20,15 @@ public class SortUtils {
 		}
 		return true;
 	}
+	public static <T extends Comparable<T>> boolean isSorted(T[] arr, int start, int end) {
+		int upperBound = (end>=arr.length) ? arr.length : end+1;
+		int lowerBound = (start <= 0) ? 1 : start;
+		for(int cnt=lowerBound; cnt<upperBound; cnt++) {
+			if(less(arr[cnt],arr[cnt-1])) {
+			   return false;	
+			}
+		}
+		return true;
+	}
 
 }
