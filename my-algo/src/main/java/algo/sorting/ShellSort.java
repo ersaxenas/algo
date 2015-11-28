@@ -26,13 +26,10 @@ public class ShellSort {
         			else {
         				break;
         			}
-        			
         		}
-        		
         	}
         	step = step/3;
         }
-    	
     	return arr;
     }
 

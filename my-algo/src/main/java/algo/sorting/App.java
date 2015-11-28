@@ -53,9 +53,21 @@ public class App {
 		System.out.println("Shuffled array:"+Arrays.asList(arr));
 	}
 	
+	public void testMergeSort(int size) {
+		Integer[] arr = getIntArray(size);
+		System.out.println("Merge Sort : Initial array:");
+		System.out.println(Arrays.asList(arr));
+		 MergeSort.sort(arr);
+		if(SortUtils.isSorted(arr)) {
+			System.out.println("Sorted");
+		}
+		System.out.println("Sorted array:");
+		System.out.println(Arrays.asList(arr));
+	}
+	
 	public static void main(String args[]) {
 		App app = new App();
-		app.testShuffle(20);
+		app.testMergeSort(100);
 	}
 
 }

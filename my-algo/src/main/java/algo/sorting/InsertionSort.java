@@ -18,4 +18,19 @@ public class InsertionSort {
     	}
     	return arr;
     }
+    
+    /*Insertion Sort*/
+    public static <T extends Comparable<T>> T[] sort(T[] arr, int lowBound, int highBound) {
+    	for(int i=lowBound; i<highBound; i++) {
+    		for(int j=i; j>0; j--){
+    			if(less(arr[j],arr[j-1])) {
+    				exch(arr, j, j-1);
+    			}
+    			else {
+    				break;
+    			}
+    		}
+    	}
+    	return arr;
+    }
 }

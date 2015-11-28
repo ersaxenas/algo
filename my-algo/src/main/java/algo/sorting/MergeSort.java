@@ -3,6 +3,7 @@ package algo.sorting;
 import algo.sorting.utils.SortUtils;
 
 public class MergeSort {
+	private static final int CUTOFF = 4;
 	/**
 	 * Function sorts array using merge sort algorithm.
 	 * @param arr - Array containing data.
@@ -16,14 +17,14 @@ public class MergeSort {
 		assert(SortUtils.isSorted(arr, low, mid)); /*Check if array1 is sorted*/
 		assert(SortUtils.isSorted(aux, mid+1, high)); /*Check if array2 is sorted*/
 		/*copy in to auxiliary array.*/
-		for(int cnt=0; cnt<arr.length; cnt++) {
+		for(int cnt=low; cnt<=high; cnt++) {
 			aux[cnt] = arr[cnt];
 		}
 		/*Start of array1*/
 		int arr1Cnt = low;
 		/*Start of array2*/
 		int arr2Cnt = mid+1;
-		for(int cnt=0; cnt<high; cnt++) {
+		for(int cnt=low; cnt<high; cnt++) {
 			
 			if(arr1Cnt>mid) {/*if array1 counter has reached mid, then take rest of the elements from array2 only*/
 				arr[cnt] = aux[arr2Cnt++]; 
@@ -52,9 +53,15 @@ public class MergeSort {
 		if(low >= high) {
 			return;
 		}
+		if(high <= low + CUTOFF -1 ) {
+			InsertionSort.sort(arr,low,high);
+		}
         int mid = low + ((high -low)/2);		
 		sort(arr, aux, low, mid);
 		sort(arr,aux,mid+1, high);
+		if(SortUtils.less(mid,mid+1) ) {
+			return;
+		}
 		merge(arr,aux,low,mid,high);
 	}
 	
