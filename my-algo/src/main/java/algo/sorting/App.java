@@ -65,9 +65,21 @@ public class App {
 		System.out.println(Arrays.asList(arr));
 	}
 	
+	public void testQuickSort(int size) {
+		Integer[] arr = getIntArray(size);
+		System.out.println("Quick Sort : Initial array:");
+		System.out.println(Arrays.asList(arr));
+		 QuickSort.sort(arr);
+		if(SortUtils.isSorted(arr)) {
+			System.out.println("Sorted");
+		}
+		System.out.println("Sorted array:");
+		System.out.println(Arrays.asList(arr));
+	}
+	
 	public static void main(String args[]) {
 		App app = new App();
-		app.testMergeSort(100);
+		app.testQuickSort(10);
 	}
 
 }

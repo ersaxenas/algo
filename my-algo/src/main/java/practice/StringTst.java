@@ -1,6 +1,8 @@
 package practice;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class StringTst {
 
@@ -18,7 +20,11 @@ public class StringTst {
 		
 		Integer a1 = 10, a2=5;
 		System.out.println("compare:"+a1.compareTo(a2));
-		
+	    Set<String> stt = new HashSet<String>();	
+	    stt.add("11");
+	    stt.add("12");
+	    System.out.println(stt);
+	    
 	}
 	
 	public static void main(String args[]) {
