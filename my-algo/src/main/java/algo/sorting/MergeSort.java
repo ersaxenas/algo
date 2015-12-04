@@ -14,17 +14,17 @@ public class MergeSort {
 	 * @return Sorted array arr[].
 	 */
 	private static <T extends Comparable<T>> T[] merge(T[] arr, T[] aux, int low, int mid, int high) {
-		assert(SortUtils.isSorted(arr, low, mid)); /*Check if array1 is sorted*/
-		assert(SortUtils.isSorted(aux, mid+1, high)); /*Check if array2 is sorted*/
 		/*copy in to auxiliary array.*/
 		for(int cnt=low; cnt<=high; cnt++) {
 			aux[cnt] = arr[cnt];
 		}
+		assert(SortUtils.isSorted(arr, low, mid)); /*Check if array is sorted low to mid*/
+		assert(SortUtils.isSorted(arr, mid+1, high)); /*Check if array is sorted mid to high*/
 		/*Start of array1*/
 		int arr1Cnt = low;
 		/*Start of array2*/
 		int arr2Cnt = mid+1;
-		for(int cnt=low; cnt<high; cnt++) {
+		for(int cnt=low; cnt<=high; cnt++) {
 			
 			if(arr1Cnt>mid) {/*if array1 counter has reached mid, then take rest of the elements from array2 only*/
 				arr[cnt] = aux[arr2Cnt++]; 
@@ -39,7 +39,7 @@ public class MergeSort {
 				arr[cnt] = aux[arr2Cnt++];
 			}
 		}
-		assert(SortUtils.isSorted(arr)); /*Check if whole array is sorted.*/
+		assert(SortUtils.isSorted(arr,low,high)); /*Check if whole array is sorted.*/
 		return arr;
 	}
 	/**
@@ -53,13 +53,13 @@ public class MergeSort {
 		if(low >= high) {
 			return;
 		}
-		if(high <= low + CUTOFF -1 ) {
+		/*if(high <= low + CUTOFF -1 ) {
 			InsertionSort.sort(arr,low,high);
-		}
+		}*/
         int mid = low + ((high -low)/2);		
 		sort(arr, aux, low, mid);
 		sort(arr,aux,mid+1, high);
-		if(SortUtils.less(mid,mid+1) ) {
+		if(!SortUtils.less(arr[mid+1],arr[mid]) ) {
 			return;
 		}
 		merge(arr,aux,low,mid,high);
@@ -70,5 +70,16 @@ public class MergeSort {
 		sort(arr, aux, 0, arr.length-1);
 	}
 	
+	public static <T extends Comparable<T>> T[] bottomUpSort(T[] arr) {
+		Comparable aux[] = new Comparable[arr.length];
+		int len = arr.length;
+		/*Size/step loop*/
+		for(int sz=1; sz<len; sz=sz+sz) {
+			for(int low=0; low<len-sz; low=low+sz+sz) {
+				merge(arr, aux, low, low+sz-1, Math.min(low+sz+sz-1, len-1));
+			}
+		}
+		return arr;
+	}
 
 }
