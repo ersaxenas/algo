@@ -4,7 +4,7 @@
   <groupId>com.algo</groupId>
   <artifactId>my-algo</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>4.0</version>
   <name>my-algo</name>
   <url>http://maven.apache.org</url>
   <dependencies>
