@@ -33,11 +33,45 @@ public class QuickSort {
 		sort(arr,ptn+1, high);
 		return arr;
 	}
-	/**/
+	/*Default quick sort*/
 	public static <T extends Comparable<T>> T[] sort(T[] arr) {
 		StdRandom.shuffle(arr);
 		sort(arr, 0, arr.length -1);
 		return arr;
 	}
+	/*Quick sort for arrays containing duplicates */
+	public static <T extends Comparable<T>> T[] sortDup(T[] arr) {
+        int low =0, high = arr.length -1;		
+        sortDup(arr, low, high);
+		return arr;
+	}
+	
+	/*Quick sort for arrays containing duplicates */
+	private static <T extends Comparable<T>> void sortDup(T[] arr, int low , int high) {
+       if(high <= low) {
+    	   return;
+       }
+	   T v = arr[low];
+	   int lt = low, gt = high, i = low;
+	   
+	   while(i <= gt) {
+		   
+		   int cmp = arr[i].compareTo(v);
+		   if(cmp < 0) { /*a[i] < v then exchange and increment lt and i*/ 
+			   SortUtils.exch(arr, lt++, i++);
+		   }
+		   else if ( cmp > 0) {/*a[i] > v then exchange and decrement gt only*/ 
+			   SortUtils.exch(arr, i, gt--);
+		   }
+		   else { /* a[i] == v then increment i only*/
+			   i++;
+		   }
+	   }
+	  sortDup(arr, low, lt-1);
+	  sortDup(arr, gt+1, high);	
+        
+	}
+	
+	
 
 }

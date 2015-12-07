@@ -12,14 +12,14 @@ public class App {
 		Integer[] arr = getIntArray(size);
 		System.out.println("Selection sort: Initial array:"+Arrays.asList(arr));
 		arr = SelectionSort.sort(arr);
-		System.out.println("Sorted array:"+Arrays.asList(arr));
+		System.out.println("array:"+Arrays.asList(arr));
 	}
 	
 	public void testInsertionSort(int size) {
 		Integer[] arr = getIntArray(size);
 		System.out.println("Insertion sort :Initial array:"+Arrays.asList(arr));
 		arr = InsertionSort.sort(arr);
-		System.out.println("Sorted array:"+Arrays.asList(arr));
+		System.out.println("array:"+Arrays.asList(arr));
 	}
 	
 	public void testShellSort(int size) {
@@ -30,7 +30,7 @@ public class App {
 		if(SortUtils.isSorted(arr)) {
 			System.out.println("Sorted");
 		}
-		System.out.println("Sorted array:");
+		System.out.println("array:");
 		System.out.println(Arrays.asList(arr));
 	}
 	
@@ -61,7 +61,7 @@ public class App {
 		if(SortUtils.isSorted(arr)) {
 			System.out.println("Sorted");
 		}
-		System.out.println("Sorted array:");
+		System.out.println("array:");
 		System.out.println(Arrays.asList(arr));
 	}
 	
@@ -73,13 +73,32 @@ public class App {
 		if(SortUtils.isSorted(arr)) {
 			System.out.println("Sorted");
 		}
-		System.out.println("Sorted array:");
+		System.out.println("array:");
+		System.out.println(Arrays.asList(arr));
+	}
+	
+	public void testSelectionItem(int size) {
+		Integer[] arr = {4,6,2,7,1,4,0,3,5,9,8};
+		System.out.println("Selection Item : Initial array:");
+		System.out.println(Arrays.asList(arr));
+        System.out.println(SelectionBasedOnQuickSort.find(arr, 11));
+	}
+	
+	public void test3WayQuickSort(int size) {
+		Integer[] arr = getIntArray(size);
+		System.out.println("3WayQuick Sort : Initial array:");
+		System.out.println(Arrays.asList(arr));
+		 QuickSort.sortDup(arr);
+		if(SortUtils.isSorted(arr)) {
+			System.out.println("Sorted");
+		}
+		System.out.println("array:");
 		System.out.println(Arrays.asList(arr));
 	}
 	
 	public static void main(String args[]) {
 		App app = new App();
-		app.testMergeSort(50);
+		app.test3WayQuickSort(25);
 	}
 
 }
