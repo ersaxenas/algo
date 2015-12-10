@@ -3,6 +3,9 @@ package alogpart1.queue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+
+import util.AlgoUtils;
 
 public class App {
 	
@@ -53,11 +56,25 @@ public class App {
 	}
 	
 	public void testUnorderedMaxPQ(int trackItems) {
-		
+		Integer[] arr = AlgoUtils.getIntArray(20);
+		System.out.println("UnorderedMaxPQ sort :Initial array:"+Arrays.asList(arr));
+		UnorderedMaxPQ<Integer> unorderedMaxPQ = new UnorderedMaxPQ<Integer>(20);
+		int cnt = 1;
+		for(int item : arr) {
+			unorderedMaxPQ.insertItem(item);
+			if(cnt >= trackItems) {
+				System.out.println("Max: "+unorderedMaxPQ.delMax()); 
+				cnt = 1;
+			}
+			else {
+				cnt++;
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
-		
+		App obj = new App();
+		obj.testUnorderedMaxPQ(4);
 	}
 
 }
