@@ -72,9 +72,27 @@ public class App {
 		}
 	}
 	
+	public void testOrderedMaxPQ(int trackItems) {
+		Integer[] arr = AlgoUtils.getIntArray(20);
+		System.out.println("OrderedMaxPQ sort :Initial array:"+Arrays.asList(arr));
+		MaxPQ<Integer> orderedMaxPQ = new MaxPQ<Integer>(25);
+		int cnt = 1;
+		for(int item : arr) {
+			orderedMaxPQ.insert(item);
+			if(cnt >= trackItems) {
+				System.out.println("Max: "+orderedMaxPQ.delMax()); 
+				cnt = 1;
+			}
+			else {
+				cnt++;
+			}
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		App obj = new App();
-		obj.testUnorderedMaxPQ(4);
+		obj.testOrderedMaxPQ(4);
 	}
 
 }

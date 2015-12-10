@@ -1,5 +1,6 @@
 package practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,9 +28,29 @@ public class StringTst {
 	    
 	}
 	
+	public void test2() {
+		ArrayList<String> arr = new ArrayList<String>(10);
+		System.out.println(arr.size());
+		arr.add("1");
+		System.out.println(arr.size());
+		arr.add("2");
+		System.out.println(arr.size());
+		arr.add("3");
+		System.out.println(arr.size());
+		arr.add("4");
+		System.out.println(arr.size());
+		arr.add("5");
+		System.out.println(arr.size());
+		arr.add("6");
+		System.out.println(arr.size());
+		arr.add("7");
+		System.out.println(arr.size());
+		System.out.println("worked");
+	}
+	
 	public static void main(String args[]) {
 		StringTst obj = new StringTst();
-		obj.splitTest();
+		obj.test2();
 	}
 	
 	
