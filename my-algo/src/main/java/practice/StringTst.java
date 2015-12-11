@@ -46,6 +46,11 @@ public class StringTst {
 		arr.add("7");
 		System.out.println(arr.size());
 		System.out.println("worked");
+		test3();
+	}
+	
+	public void test3(){
+		StaticInitTest.load();
 	}
 	
 	public static void main(String args[]) {
