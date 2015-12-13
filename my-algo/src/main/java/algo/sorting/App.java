@@ -2,7 +2,6 @@ package algo.sorting;
 
 
 import java.util.Arrays;
-import java.util.Random;
 
 import util.AlgoUtils;
 import algo.sorting.utils.SortUtils;
@@ -89,9 +88,25 @@ public class App {
 		System.out.println(Arrays.asList(arr));
 	}
 	
+	public void testHeapSort(int size) {
+		Integer[] arr = {4,3,5,6,7,8,9,33,55,66,22,10};
+		System.out.println("Heap Sort : Initial array:");
+		System.out.println(Arrays.asList(arr));
+		HeapSort hs = new HeapSort<Integer>();
+		hs.sort(arr);
+		if(SortUtils.isSorted(arr)) {
+			System.out.println("Sorted");
+		}
+		else {
+			System.out.println("NOT Sorted");
+		}
+		System.out.println("array:");
+		System.out.println(Arrays.asList(arr));
+	}
+	
 	public static void main(String args[]) {
 		App app = new App();
-		app.test3WayQuickSort(25);
+		app.testHeapSort(10);
 	}
 
 }
