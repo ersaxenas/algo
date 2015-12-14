@@ -6,6 +6,7 @@ public class UnorderedSymbolTableLL<K extends Comparable<K>, V> {
     private Node last;
 	
     public void put(K key, V val) {
+      System.out.println("Insert :("+key+","+val+")");
       Node node = new Node();
       node.setKey(key);
       node.setVal(val);
@@ -20,29 +21,66 @@ public class UnorderedSymbolTableLL<K extends Comparable<K>, V> {
      if(first == null) {
     	 first = node;
      }
+     
+     print();
     }
     
-    public void remove(K key) {
+    public boolean remove(K key) {
+    	if(isEmpty()) {
+    		return false;
+    	}
     	 Node node = first;
+    	 Node previous = null;
          while(node != null) {
        	  int cmp = key.compareTo(node.getKey());
        	  if(cmp == 0) {
-       		  
+       		  if(previous == null) {
+       			  /*first node*/
+       			  first = first.getNext();
+       			  node.setNext(null);
+       			  node = null;
+       		  }
+       		  else {
+       			 previous.setNext(node.getNext());
+       			 node.setNext(null);
+      			 node = null;
+       		  }
+       		System.out.println("removed :("+key+")");
+            print();
+       		  return true;
        	  }
+       	  previous = node;
        	  node = node.getNext();
          }
+         System.out.println("Key :("+key+") not found");
+         return false;
     }
     
     public V get(K key) {
+    	if(isEmpty()) {
+    		return null;
+    	}
      Node node = first;
           while(node != null) {
         	  int cmp = key.compareTo(node.getKey());
         	  if(cmp == 0) {
+        		  System.out.println("Key "+key+" found");
         		  return node.getVal();
         	  }
         	  node = node.getNext();
           }
+          System.out.println("Key "+key+" not found");
           return null;
+    }
+    
+    public void print() {
+    	Node node = first;
+    	System.out.println("\n");
+    	while(node != null) {
+    		System.out.print("("+node.getKey()+","+node.getVal()+")->");
+    		node = node.getNext();
+    	}
+    	System.out.println("\n");
     }
 	
     public boolean contains(K key) {
@@ -87,6 +125,10 @@ public class UnorderedSymbolTableLL<K extends Comparable<K>, V> {
 		}
 		public void setVal(V val) {
 			this.val = val;
+		}
+		@Override
+		public String toString() {
+			return "Node [key=" + key + ", val=" + val + "]";
 		}
 		
 	}
