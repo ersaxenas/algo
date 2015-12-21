@@ -39,17 +39,18 @@ public class App {
 	    	System.out.println("Get Value :"+89+":"+bst.getValue(89));
 	    	System.out.println("Get Rank : "+18+":"+bst.rank(18));
 	    	System.out.println("Get Rank : "+22+":"+bst.rank(22));
-	    	bst.delete(76);
+	    	/*bst.delete(76);
             System.out.println(bst.iterator());	
             bst.delMin();
             System.out.println(bst.iterator());	
-            bst.delMax();
+            bst.delMax();*/
             System.out.println(bst.iterator());
             System.out.println(bst.getMin());
+            System.out.println("Range:"+bst.findKeyInRange(80, 90));
 	}
 	
 	public void testRedBlackBinarySearchTree() {
-	    Integer arr[] = AlgoUtils.getIntArray(9999999);
+	    Integer arr[] = {22,56,34,9,76,43,27,18,94,56,75,83,88,29,3};
 	    RedBlackBST<Integer, String> bst = new RedBlackBST<Integer, String>();
 	    for( int a : arr) {
 	    	bst.put(a, String.valueOf(a));
@@ -65,12 +66,13 @@ public class App {
 	    	System.out.println("Get Rank : "+22+":"+bst.rank(22));
             System.out.println(bst.iterator());
             System.out.println(bst.getMin());
+           
 	}
 	
 	
 	public static void main(String[] args) {
 		App obj = new App();
-		obj.testRedBlackBinarySearchTree();
+		obj.testBinarySearchTree();
 	}
 
 }
