@@ -291,13 +291,24 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
 	   }
 	   return sz;
    }
-   
+   /**
+    * Function finds keys in the given range.
+    * @param key1
+    * @param key2
+    * @return
+    */
    public Iterable<K> findKeyInRange(K key1, K key2) {
 	   Queue<K> queue = new ArrayDeque<K>();
 	   findKeyInRange(key1, key2, queue, root);	   
 	   return queue;
    }
-   
+   /**
+    * Function finds keys within provided range startig from the give node.
+    * @param key1
+    * @param key2
+    * @param queue
+    * @param x
+    */
    private void findKeyInRange(K key1, K key2, Queue<K> queue, Node x) {
 	   if(x==null) {return;};
 	   int cmp1 = key1.compareTo(x.key);
