@@ -41,6 +41,7 @@ public class App
     TreeMap<Integer, ArrayList<Line>> xLine = new TreeMap<Integer, ArrayList<Line>>();
     int maxX = 0;
     for(Line line : hLines) {
+    	/*put start x coordinate of horizontal line*/
     	int x = line.getStart().getX();
     	if(xLine.containsKey(x)) {
     		xLine.get(x).add(line);
@@ -53,7 +54,8 @@ public class App
     	if(x > maxX) {
     		maxX = x;
     	}
-        x = line.getStart().getX();
+    	/*Put end x coordinate of horizontal line*/
+        x = line.getEnd().getX();
     	if(xLine.containsKey(x)) {
     		xLine.get(x).add(line);
     	}
@@ -68,6 +70,7 @@ public class App
     }
     
     for(Line line : vLines) {
+    	/*Put start x coordinate of vertical line*/
     	int x = line.getStart().getX();
     	if(xLine.containsKey(x)) {
     		xLine.get(x).add(line);
@@ -79,17 +82,6 @@ public class App
     	}
         x = line.getStart().getX();
         if(x > maxX) {
-    		maxX = x;
-    	}
-    	if(xLine.containsKey(x)) {
-    		xLine.get(x).add(line);
-    	}
-    	else {
-    		ArrayList<Line> lst = new ArrayList<Line>();
-    		lst.add(line);
-    		xLine.put(x,lst);
-    	}
-    	if(x > maxX) {
     		maxX = x;
     	}
     }
