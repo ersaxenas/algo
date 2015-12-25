@@ -35,15 +35,21 @@ public class IntersectionBinarySearchTree<K extends Comparable<K>, V extends Com
 		int cmp = key.compareTo(x.getKey());
 		if(cmp < 0) {
 			x.setLeftNode(put(x.getLeftNode(), key, val));
-			if(x.maxRight.compareTo(x.leftNode.maxRight) < 0) {
-				x.maxRight = x.leftNode.maxRight;
+			if(x.leftNode != null) {
+				if(x.maxRight.compareTo(x.leftNode.maxRight) < 0) {
+					x.maxRight = x.leftNode.maxRight;
+				}
 			}
+			
 		}
 		else if (cmp > 0) {
 			x.setRightNode(put(x.getRightNode(), key, val));
-			if(x.maxRight.compareTo(x.leftNode.maxRight) < 0) {
-				x.maxRight = x.leftNode.maxRight;
+			if(x.rightNode != null) {
+				if(x.maxRight.compareTo(x.rightNode.maxRight) < 0) {
+					x.maxRight = x.rightNode.maxRight;
+				}
 			}
+			
 		}
 		else {
 			x.setVal(val);

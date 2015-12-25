@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.TreeMap;
 
 import algo.symboltable.BinarySearchTree;
+import algo.symboltable.IntersectionBinarySearchTree;
 
 import com.algo.model.Coordinate;
 import com.algo.model.Line;
@@ -18,7 +19,7 @@ public class App
     public static void main( String[] args )
     {
       App obj = new App();
-      obj.findIntersectionOfLines();
+      obj.findIntersectinOfIntervals();
     }
     
     /**
@@ -118,7 +119,19 @@ public class App
     
     	
     }
-    
+
+    public void findIntersectinOfIntervals() {
+    	IntersectionBinarySearchTree<Integer, Integer> bst = new IntersectionBinarySearchTree<Integer, Integer>();
+    	bst.put(12, 18);
+    	bst.put(1,4);
+    	bst.put(3, 6);
+    	bst.put(14, 17);
+    	bst.put(20, 22);
+    	System.out.println("keys added....");
+    	
+    	
+    	
+    }
     
     
 }
