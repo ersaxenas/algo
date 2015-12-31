@@ -81,6 +81,30 @@ public class IntersectionBinarySearchTree<K extends Comparable<K>, V extends Com
 		return null;
 	}
 	
+	public Node searchItervalOverlap(K key, V val) {
+		Node x = root;
+		while(x != null) {
+		      /*check for intersection*/
+			  if((x.key.compareTo(key) < 0) && (x.val.compareTo((V) key) > 0)) {
+				  return x;
+			  }
+			  else if((x.key.compareTo((K) val) < 0) && (x.val.compareTo(val) > 0)) {
+				  return x;
+			  }
+			 
+			  if(x.leftNode == null){
+				  x = x.rightNode;
+			  } /*check if max left is less then x - key then go right */
+			  else if(x.leftNode.maxRight.compareTo((V) key) < 0) {
+				  x = x.rightNode;
+			  }
+			  else {
+				  x = x.leftNode;
+			  }
+		}
+		return null;
+	}
+	
 	/**
 	 * Function checks if key is present in the tree or not.
 	 * If key is found then it returns true else false.

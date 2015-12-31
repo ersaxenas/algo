@@ -128,7 +128,9 @@ public class App
     	bst.put(14, 17);
     	bst.put(20, 22);
     	System.out.println("keys added....");
-    	
+    	System.out.println("7,10 :"+bst.searchItervalOverlap(7,10));
+    	System.out.println("16,21 :"+bst.searchItervalOverlap(16,21));
+    	System.out.println("20,22 :"+bst.searchItervalOverlap(20,22));
     	
     	
     }
