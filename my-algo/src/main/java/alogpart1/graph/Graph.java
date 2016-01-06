@@ -1,7 +1,5 @@
 package alogpart1.graph;
 
-import alogpart1.bag.Bag;
-import alogpart1.bag.BagImpl;
 
 public interface Graph {
 	 
