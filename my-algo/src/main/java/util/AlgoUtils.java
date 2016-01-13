@@ -12,4 +12,26 @@ public class AlgoUtils {
 		}
 		return arr;
 	}
+	
+	public static String[] stringSuffix(String str) {
+		int strLen = str.length();
+		String arr[] = new String[strLen];
+		for(int cnt=0; cnt<strLen; cnt++) {
+			arr[cnt] = str.substring(cnt, strLen);
+		}
+		return arr;
+	}
+	
+	public static int longestCommonPrefix(String str1, String str2) {
+		int strLen = Math.min(str1.length(), str2.length());
+		int prefixEnd = strLen;
+		for(int cnt=0; cnt<strLen; cnt++) {
+			if(str1.charAt(cnt) != str2.charAt(cnt)) {
+				prefixEnd = cnt;
+				break;
+			}
+		}
+		return prefixEnd;
+	}
+	
 }
