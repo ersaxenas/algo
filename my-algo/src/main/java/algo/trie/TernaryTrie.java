@@ -1,5 +1,8 @@
 package algo.trie;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class TernaryTrie {
 	
 	Node root = new Node();
@@ -56,6 +59,21 @@ public class TernaryTrie {
     	return val;
     }
     
+    public Queue iterator() {
+    	 Queue queue = new ArrayDeque();
+    	 collect(root, queue);
+    	 return queue;
+    }
+    
+    private void collect(Node x, Queue queue) {
+    	if(x == null) {
+    		return;
+    	}
+    	queue.add(x);
+    	collect(x.left, queue);
+    	collect(x.mid, queue);
+    	collect(x.right,queue);
+    }
     
     
 	
@@ -65,7 +83,7 @@ public class TernaryTrie {
 		private Node left,mid,right;
 		@Override
 		public String toString() {
-			return "Node [key=" + key + ", val=" + val + "]";
+			return  key + ((val !=null ) ? (" "+val) : "");
 		}
 	}
 }

@@ -43,7 +43,9 @@ public class TrieApp {
 		System.out.println("Key:"+trie.getVal("abkd"));
 		System.out.println("Key:"+trie.getVal("abkdd"));
 		System.out.println("Key:"+trie.getVal("abcde"));
+		System.out.println(trie.iterator());
 		System.out.println("Done Ternary Rway Tries.");
+		
 	}
 	
 	public static void main(String args[]) {
