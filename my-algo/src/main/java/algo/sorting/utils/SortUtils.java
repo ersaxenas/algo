@@ -2,8 +2,8 @@ package algo.sorting.utils;
 
 public class SortUtils {
 	
-	public static <T extends Comparable<T>> boolean less(T v, T w) {
-		return v.compareTo(w) < 0;
+	public static <T extends Comparable<T>> boolean less(Comparable<T> aux, Comparable<T> aux2) {
+		return aux.compareTo((T) aux2) < 0;
 	}
 	
 	public static <T> void exch(T[] arr, int i, int j) {

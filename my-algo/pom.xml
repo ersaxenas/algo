@@ -7,6 +7,9 @@
   <version>4.0</version>
   <name>my-algo</name>
   <url>http://maven.apache.org</url>
+  <properties>
+     <java.version>1.8</java.version>
+</properties> 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
