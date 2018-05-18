@@ -5,12 +5,19 @@ import java.util.Arrays;
 import algo.sorting.utils.SortUtils;
 
 public class HeapSort<T extends Comparable<T>> {
+	
+	/**
+	 * for a k node:
+	 * parent is at k/2 node
+	 * two child are at 2*k, 2*k+1 nodes
+	 */
 
 	public void sink(T[] arr, int k, int N) {
+		/*node moving down in the tree*/
 		int j = 0;
 		while (2 * k <= N) { /* child index should be less then array upper bound */
 			j = 2 * k; /* first child will be 2*k and second child will be (2*k)+1 i.e. next to first */
-			if (j < N && less(arr,j,j+1)) {/* choose bigger of two child nodes (j,j+1), keeping in mind that j is less then upper array bound. */
+			if (j < N && less(arr,j,j+1)) {/* choose/select bigger of two child nodes (j,j+1), keeping in mind that j is less then upper array bound. */
 				j++; /* if second child is bigger then increment the j to point to 2nd child else let it point to first child (2*k) */
 			}
 			if (less(arr,k,j)) { /* if parent is less then child then exchange parent with child */
@@ -24,6 +31,7 @@ public class HeapSort<T extends Comparable<T>> {
 	}
 
 	public void swim(T[] arr, int k, int N) {
+		/*node moving up in the tree*/
 		int j = k;
 		while (j > 1) { /* check if j is at the root of the node */
 			if (less(arr,(j/2),j)) { /* compare parent (j/2) with child j and if parent is less then exchange with child */
@@ -31,7 +39,7 @@ public class HeapSort<T extends Comparable<T>> {
 			} else { /* if parent is not less then child so no need to swim up anymore. */
 				break; /* break the loop */
 			}
-			j = j/2; /* move the parent, treat is a child and compare with its parent : loop continues */
+			j = j/2; /* move to the parent node, treat it as child and compare with its parent : loop continues */
 		}
 	}
 

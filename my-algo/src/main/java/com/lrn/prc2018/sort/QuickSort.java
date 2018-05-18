@@ -59,7 +59,7 @@ public class QuickSort<T extends Comparable<T>> {
 			 * 		: if(leftSidePointer is greater then or equal to high then break)
 			 * */
 	         while(sortUtils.isLess(array[++leftSidePointer], array[low])) {
-	        	   if(leftSidePointer >= high) {
+	        	   if(leftSidePointer == high) {
 	        		   break;
 	        	   }
 	         }
@@ -70,12 +70,12 @@ public class QuickSort<T extends Comparable<T>> {
 	          * 		: if (rightSidePointer is greater then or equal to high then break)
 	          */
 	         while(sortUtils.isLess(array[low], array[--rightSidePointer])) {
-	        	    if(rightSidePointer <= low) {
+	        	    if(rightSidePointer == low) {
 	        	    	break;
 	        	    }
 	         }
 			
-			if(leftSidePointer > rightSidePointer) {
+			if(leftSidePointer >= rightSidePointer) {
 				break; /*break infinite main loop*/
 			}
 			/* exchange elements at leftSidePointer and rightSidePointer

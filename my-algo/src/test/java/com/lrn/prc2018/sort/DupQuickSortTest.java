@@ -4,26 +4,21 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.lrn.prc2018.util.AlgoUtils;
 import com.lrn.prc2018.util.SortUtils;
 
-public class ShellSortTest {
+public class DupQuickSortTest {
 	
-	ShellSort<Integer> shellSort = new ShellSort<>();
 	SortUtils<Integer> sortUtils = new SortUtils<>();
-
-	@Before
-	void setUp() throws Exception {
-	}
+	DupQuickSort<Integer> dupQuickSort = new DupQuickSort<>();
 
 	@Test
-	void test() {
-		Integer[] intArray = AlgoUtils.getIntArray(20);
+	public void testSortArray() {
+		Integer[] intArray = AlgoUtils.getIntArray(10);
 		System.out.println(Arrays.asList(intArray));
-		shellSort.sortArray(intArray);
+		dupQuickSort.sortArray(intArray, 0, intArray.length-1);
 		System.out.println(Arrays.asList(intArray));
 		assertTrue(sortUtils.isSorted(intArray));
 	}
