@@ -23,7 +23,7 @@ public class DepthFirstSearch implements Paths{
 	 */
 	/*array stores node/vertices has been marked/linked to another node
 	 * true - if linked to another node
-	 * fales - not linked to any node
+	 * false - not linked to any node
 	 * */
 	private boolean marked[];
 	/*array stores link/path to node*/

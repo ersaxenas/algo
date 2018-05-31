@@ -5,54 +5,83 @@ import java.util.Stack;
 
 import edu.princeton.cs.algs4.Queue;
 
-public class BreadthFirstSearch implements Paths{
-	private boolean marked[];
-	private int markedTo[];
-	private int s;
-	private int distTo[];
-	
-	public BreadthFirstSearch(Graph G, int s) {
+public class BreadthFirstSearch implements Paths {
+	/*
+	 * array stores node/vertices has been marked/linked to another node true - if linked to another node false - not linked to any node
+	 */
+	private final boolean marked[];
+	/* array stores link/path to node */
+	private final int markedTo[];
+	/* root or source node */
+	private final int s;
+	/* distance from source */
+	private final int distTo[];
+
+	public BreadthFirstSearch(final Graph G, final int s) {
+		/* save root/source node instance */
 		this.s = s;
+		/* initialize markedTo array by size equal to no. of vertices */
 		markedTo = new int[G.getV()];
+		/* initialize distTo by size equal to no. of vertices */
 		distTo = new int[G.getV()];
+		/* initialize marked by size equal to no. */
 		marked = new boolean[G.getV()];
+		/* mark status of all vertices or nodes as false */
 		Arrays.fill(marked, false);
+		/* set default value for distTo to -1 */
 		Arrays.fill(distTo, -1);
+		/* set default value for markedTo to -1 */
 		Arrays.fill(markedTo, -1);
-		bfs(G,s);
+		/* call BFS */
+		bfs(G, s);
 	}
-	
-	private void bfs(Graph G, int src) {
+
+	private void bfs(final Graph G, final int src) {
+		/* create a queue */
 		Queue<Integer> queue = new Queue<Integer>();
+		/* add source node to queue */
 		queue.enqueue(src);
+		/* mark source as true or linked */
 		marked[src] = true;
+		/* source linked to source */
 		markedTo[src] = src;
-		distTo[src]= 0;
+		/* distance from source - start with zero */
+		distTo[src] = 0;
+		/* start with source node */
 		int currNode = 0;
-		while(!queue.isEmpty()) {
+		while (!queue.isEmpty()) {
+			/* pull current node from queue */
 			currNode = queue.dequeue();
-			for(int edge : G.adj(currNode)) {
-				if(!marked[edge]) {
+			/* for all adjacent vertices for current node */
+			for (int edge : G.adj(currNode)) {
+				/* if not marked or linked */
+				if (!marked[edge]) {
+					/* add to the queue */
 					queue.enqueue(edge);
+					/* mark as linked */
 					marked[edge] = true;
+					/* establish link between current and adjacent node */
 					markedTo[edge] = currNode;
-					distTo[edge] = distTo[currNode]+1;
+					/* distance = distance of source from current node + 1 */
+					distTo[edge] = distTo[currNode] + 1;
 				}
 			}
 		}
 	}
-	
-	public boolean hasPathTo(int v) {
+
+	@Override
+	public boolean hasPathTo(final int v) {
 		return marked[v];
 	}
-	
-	public Iterable<Integer> pathTo(int v) {
-		if(!marked[v]) {
+
+	@Override
+	public Iterable<Integer> pathTo(final int v) {
+		if (!marked[v]) {
 			return null;
 		}
 		Stack<Integer> stack = new Stack<Integer>();
 		int parent = v;
-		while(parent != s) {
+		while (parent != s) {
 			stack.push(parent);
 			parent = markedTo[parent];
 		}
@@ -61,7 +90,7 @@ public class BreadthFirstSearch implements Paths{
 	}
 
 	@Override
-	public void paths(Graph G, int s) {
+	public void paths(final Graph G, final int s) {
 		throw new UnsupportedOperationException("Operation paths(Graph G, int s) is not supported.");
 	}
 
