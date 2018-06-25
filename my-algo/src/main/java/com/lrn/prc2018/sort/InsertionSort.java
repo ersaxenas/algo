@@ -5,15 +5,15 @@ import com.lrn.prc2018.util.SortUtils;
 public class InsertionSort<T extends Comparable<T>> {
 
 	SortUtils<T> sortUtils = new SortUtils<>();
-	
-	public void sortArray(T[] intArray) {
+
+	public void sortArray(final T[] intArray) {
 		/*start with second element in the array
 		 * move in forward direction ++
 		 * break look if reached at the end of element
 		 * */
 		for(int cnt1=1; cnt1<intArray.length; cnt1++) {
 			/*traverse in the reverse direction and sort elements of left side array
-			 * elements ---- cnt1/current pointer ---- rest of the elments
+			 * elements ---- cnt1/current pointer ---- rest of the elements
 			 * <---left side array--->    ^   <---right side of the array --->
 			 * sort left side array
 			 * */
@@ -28,5 +28,5 @@ public class InsertionSort<T extends Comparable<T>> {
 			}
 		}
 	}
-	
+
 }

@@ -11,17 +11,17 @@ import com.lrn.prc2018.util.AlgoUtils;
 import com.lrn.prc2018.util.SortUtils;
 
 public class ShellSortTest {
-	
+
 	ShellSort<Integer> shellSort = new ShellSort<>();
 	SortUtils<Integer> sortUtils = new SortUtils<>();
 
 	@Before
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 	}
 
 	@Test
-	void test() {
-		Integer[] intArray = AlgoUtils.getIntArray(20);
+	public void test() {
+		Integer[] intArray = AlgoUtils.getIntArray(100);
 		System.out.println(Arrays.asList(intArray));
 		shellSort.sortArray(intArray);
 		System.out.println(Arrays.asList(intArray));

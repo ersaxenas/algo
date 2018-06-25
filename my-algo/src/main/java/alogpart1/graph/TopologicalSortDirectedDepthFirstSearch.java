@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class TopologicalSortDirectedDepthFirstSearch implements Paths{
-	private boolean marked[];
-	private int markedTo[];
-	private int s;
-	private Stack<Integer> stack = new Stack<Integer>();
-	
-	public TopologicalSortDirectedDepthFirstSearch(Graph G, int s) {
+	private final boolean marked[];
+	private final int markedTo[];
+	private final int s;
+	private final Stack<Integer> stack = new Stack<Integer>();
+
+	public TopologicalSortDirectedDepthFirstSearch(final Graph G, final int s) {
 		this.s = s;
 		markedTo = new int[G.getV()];
 		marked = new boolean[G.getV()];
@@ -20,8 +20,8 @@ public class TopologicalSortDirectedDepthFirstSearch implements Paths{
 			}
 		}
 	}
-	
-	private void dfs(Graph G, int src) {
+
+	private void dfs(final Graph G, final int src) {
 		marked[src] = true;
 		for(int edge: G.adj(src)) {
 			if(!marked[edge]) {
@@ -31,16 +31,18 @@ public class TopologicalSortDirectedDepthFirstSearch implements Paths{
 		}
 		stack.push(src);
 	}
-	
+
 	public Iterable<Integer> reversePost() {
 		return stack;
 	}
-	
-	public boolean hasPathTo(int v) {
+
+	@Override
+	public boolean hasPathTo(final int v) {
 		return marked[v];
 	}
-	
-	public Iterable<Integer> pathTo(int v) {
+
+	@Override
+	public Iterable<Integer> pathTo(final int v) {
 		if(!marked[v]) {
 			return null;
 		}
@@ -55,7 +57,7 @@ public class TopologicalSortDirectedDepthFirstSearch implements Paths{
 	}
 
 	@Override
-	public void paths(Graph G, int s) {
+	public void paths(final Graph G, final int s) {
 		throw new UnsupportedOperationException("Operation paths(Graph G, int s) is not supported.");
 	}
 
