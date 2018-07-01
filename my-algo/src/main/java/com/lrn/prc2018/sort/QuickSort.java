@@ -48,7 +48,7 @@ public class QuickSort<T extends Comparable<T>> {
 		 * It moves in the backward/reverse direction -- and stops if it crosses array first element (low).
 		 * */
 		int rightSidePointer = high + 1;
-		/*this look runs till leftSidePointer crosses right side pointer
+		/*this loop runs till leftSidePointer crosses right side pointer
 		 * break if leftSidePointer > rightSidePointer
 		 * */
 		while(true) {
